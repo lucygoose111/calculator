@@ -1,13 +1,13 @@
-const display = document.getElementById('display')
+const display = document.getElementById('display');
 
-const buttons = ['clear','backspace','exponent','divide', 7,8,9,'multiply', 4,5,6, 'subtract', 1,2,3, 'plus', 'pos-neg-toggle', 0, 'decimal', 'equals']
+const buttons = ['clear','backspace','exponent','divide', 7,8,9,'multiply', 4,5,6, 'subtract', 1,2,3, 'plus', 'pos-neg-toggle', 0, 'decimal', 'equals'];
 
 buttons.forEach(buttonType=>{
 
-    let buttonElement = document.getElementById('btn-'+buttonType)
+    let buttonElement = document.getElementById('btn-'+buttonType);
     buttonElement.addEventListener('click', function () {
 
-        clickButton(buttonType)
+        clickButton(buttonType);
 
     });
 
@@ -28,93 +28,92 @@ function clickButton(type) {
         case 9:
         case 0:
 
-            display.innerText += type
+            display.innerText += type;
 
-            break
+            break;
 
         case 'plus':
 
-            display.innerText += '+'
+            display.innerText += '+';
 
-            break
+            break;
 
         case 'subtract':
 
-            display.innerText += '-'
+            display.innerText += '-';
 
-            break
+            break;
 
         case 'multiply':
 
-            display.innerText += '×'
+            display.innerText += '×';
 
             break
 
         case 'divide':
 
-            display.innerText += '÷'
+            display.innerText += '÷';
 
-            break
+            break;
         
         case 'clear':
 
-            display.innerText = ''
+            display.innerText = '';
 
-            break
+            break;
         
 
         case 'backspace':
 
-            display.innerText = display.innerText.substring(0, display.innerText.length - 1)
+            display.innerText = display.innerText.substring(0, display.innerText.length - 1);
             
-            break
+            break;
         
         case 'decimal':
 
-            display.innerText += '.'
+            display.innerText += '.';
 
-            break
+            break;
         
         case 'equals':
 
-            let validEquation = display.innerText.match(/([0-9.]+)([\+\-×÷])([0-9.]+)/)
+            let validEquation = display.innerText.match(/([0-9.]+)([\+\-×÷])([0-9.]+)/);
             if (validEquation) {
                 
-                let num1 = parseFloat(validEquation[1])
-                let operator = validEquation[2]
-                let num2 = parseFloat(validEquation[3])
-                let result = 0
+                let num1 = parseFloat(validEquation[1]);
+                let operator = validEquation[2];
+                let num2 = parseFloat(validEquation[3]);
+                let result = 0;
 
                 switch (operator) {
 
                     case '+':
-                        result = num1 + num2
-                        break
+                        result = num1 + num2;
+                        break;
                     case '-':
-                        result = num1 - num2
-                        break
+                        result = num1 - num2;
+                        break;
                     case '×':
-                        result = num1 * num2
-                        break
+                        result = num1 * num2;
+                        break;
                     case '÷':
-                        result = num1 / num2
-                        break
+                        result = num1 / num2;
+                        break;
 
                 }
 
-                display.innerText = result
+                display.innerText = result;
 
             
             }
 
             else {
 
-                alert('invalid equation')
+                alert('invalid equation');
 
             }
 
-            break
-
+            break;
 
     }
 
