@@ -34,25 +34,25 @@ function clickButton(type) {
 
         case 'plus':
 
-            display.innerText += '+';
+            display.innerHTML += ' +&nbsp;';
 
             break;
 
         case 'subtract':
 
-            display.innerText += '-';
+            display.innerHTML += ' -&nbsp;';
 
             break;
 
         case 'multiply':
 
-            display.innerText += '×';
+            display.innerHTML += ' ×&nbsp;';
 
             break
 
         case 'divide':
 
-            display.innerText += '÷';
+            display.innerHTML += ' ÷&nbsp;';
 
             break;
         
@@ -75,9 +75,47 @@ function clickButton(type) {
 
             break;
         
+        case 'pos-neg-toggle':
+
+            let findLastNumberRegex = null;
+            if ( display.innerText.match(/\s[\+\-×÷]\s/) ) {
+
+                findLastNumberRegex = /.\s([\-0-9.]+)$/
+        
+            }
+
+            else {
+
+                findLastNumberRegex = /([\-0-9.]+)$/
+
+            }
+
+            let findLastNumber = display.innerText.match(findLastNumberRegex);
+            if (findLastNumber) {
+
+                let lastNumber = findLastNumber[1];
+                let lastNumberAltered = null;
+                if ( !lastNumber.match('-') ) {
+
+                    lastNumberAltered = parseFloat('-'+lastNumber);
+
+                }
+
+                else {
+
+                    lastNumberAltered = parseFloat( lastNumber.replace(/-([0-9.]+)$/, '$1') );
+
+                }
+
+                display.innerText = display.innerText.replace(/[\-0-9.]+$/, lastNumberAltered);
+
+            }
+
+            break;
+        
         case 'equals':
 
-            let validEquation = display.innerText.match(/([0-9.]+)([\+\-×÷])([0-9.]+)/);
+            let validEquation = display.innerText.match(/([\-0-9.]+)\s([\+\-×÷])\s([\-0-9.]+)/);
             if (validEquation) {
                 
                 let num1 = parseFloat(validEquation[1]);
