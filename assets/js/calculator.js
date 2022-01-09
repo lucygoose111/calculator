@@ -1,5 +1,5 @@
 const display = document.getElementById('display');
-
+const chooseExponent = '<sup class="choose-exponent">𝒴</sup>';
 const buttons = ['clear','backspace','exponent','divide', 7,8,9,'multiply', 4,5,6, 'subtract', 1,2,3, 'plus', 'pos-neg-toggle', 0, 'decimal', 'equals'];
 
 buttons.forEach(buttonType=>{
@@ -27,9 +27,31 @@ function clickButton(type) {
         case 8:
         case 9:
         case 0:
+            
+            let findLastExponent = new RegExp(chooseExponent+'$');
+            if (display.innerHTML.match(findLastExponent)) {
 
-            display.innerText += type;
+                display.innerHTML = display.innerHTML.replace('𝒴', type);
+                return;
 
+            }
+
+            if (display.innerHTML.match(/<sup class="choose-exponent">[0-9]+<\/sup>$/)) {
+
+                let exponentMatch = display.innerHTML.match(/<sup class="choose-exponent">([0-9]+)<\/sup>$/);
+
+                let exponent = exponentMatch[1]+type;
+
+                let exponentSup = '<sup class="choose-exponent">'+exponent+'</sup>';
+
+                display.innerHTML = display.innerHTML.replace(/<sup class="choose-exponent">[0-9]+<\/sup>$/, exponentSup);
+                return;
+                 
+
+            }
+
+            display.innerHTML += type;
+            
             break;
 
         case 'plus':
@@ -58,27 +80,27 @@ function clickButton(type) {
         
         case 'clear':
 
-            display.innerText = '';
+            display.innerHTML = '';
 
             break;
         
 
         case 'backspace':
 
-            display.innerText = display.innerText.substring(0, display.innerText.length - 1);
+            display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
             
             break;
         
         case 'decimal':
 
-            display.innerText += '.';
+            display.innerHTML += '.';
 
             break;
         
         case 'pos-neg-toggle':
 
             let findLastNumberRegex = null;
-            if ( display.innerText.match(/\s[\+\-×÷]\s/) ) {
+            if ( display.innerHTML.match(/\s[\+\-×÷]\s/) ) {
 
                 findLastNumberRegex = /.\s([\-0-9.]+)$/
         
@@ -90,7 +112,7 @@ function clickButton(type) {
 
             }
 
-            let findLastNumber = display.innerText.match(findLastNumberRegex);
+            let findLastNumber = display.innerHTML.match(findLastNumberRegex);
             if (findLastNumber) {
 
                 let lastNumber = findLastNumber[1];
@@ -107,15 +129,46 @@ function clickButton(type) {
 
                 }
 
-                display.innerText = display.innerText.replace(/[\-0-9.]+$/, lastNumberAltered);
+                display.innerHTML = display.innerHTML.replace(/[\-0-9.]+$/, lastNumberAltered);
 
             }
+
+            break;
+
+        case 'exponent':
+            
+            display.innerHTML += chooseExponent;
 
             break;
         
         case 'equals':
 
-            let validEquation = display.innerText.match(/([\-0-9.]+)\s([\+\-×÷])\s([\-0-9.]+)/);
+            let displayText = display.innerHTML.replace('&nbsp;', ' ');
+            let findExponentSups = display.innerHTML.match(/[0-9]+<sup class="choose-exponent">[0-9]+<\/sup>/g);
+
+            if (findExponentSups) {
+
+                findExponentSups.forEach(exponentSup=>{
+
+                    let findNumbers = exponentSup.match(/([0-9]+)<sup class="choose-exponent">([0-9]+)<\/sup>/);
+
+                    let mainNumber = parseFloat(findNumbers[1]);
+                    let exponentNumber = parseInt(findNumbers[2]);
+
+                    let exponentResult = mainNumber ** exponentNumber;
+
+                    display.innerHTML = display.innerHTML.replace(exponentSup, exponentResult);
+                    displayText = display.innerHTML;
+
+                });
+
+                if (findExponentSups.length === 1) { return; }
+
+            }
+
+            displayText = display.innerHTML.replace('&nbsp;', ' ');
+
+            let validEquation = displayText.match(/([\-0-9.]+)\s([\+\-×÷])\s([\-0-9.]+)/);
             if (validEquation) {
                 
                 let num1 = parseFloat(validEquation[1]);
@@ -125,7 +178,7 @@ function clickButton(type) {
 
                 switch (operator) {
 
-                    case '+':
+                    case '+': 
                         result = num1 + num2;
                         break;
                     case '-':
@@ -140,14 +193,13 @@ function clickButton(type) {
 
                 }
 
-                display.innerText = result;
-
+                display.innerHTML = result;
             
             }
 
             else {
 
-                alert('invalid equation');
+                alert('Invalid equation.');
 
             }
 

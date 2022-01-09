@@ -1,6 +1,7 @@
 :root {
 
     --lightgrey:rgb(197, 196, 196);
+    --thickborder: 5px solid rgb(39, 39, 39);
 
 }
 
@@ -15,10 +16,17 @@ body {
 
 }
 
+.calculator {
+
+    border-radius: 1rem;
+    box-shadow: 10px 10px 10px rgb(102, 102, 102);
+
+}
+
 #display {
 
     height: 2.5rem;
-    border: 1px solid black;
+    border: var(--thickborder);
     font-size: 2rem;
     text-align: right;
     font-family: arial;
@@ -43,7 +51,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: var(--thickborder);
     background-color: rgb(108, 172, 255);
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -78,6 +86,12 @@ button {
     width: 100%;
     font-size: 2rem;
     cursor: pointer;
+
+}
+
+.exponent, .choose-exponent {
+
+    font-size: 1.2rem; 
 
 }
 
