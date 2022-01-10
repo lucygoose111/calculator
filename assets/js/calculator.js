@@ -144,13 +144,13 @@ function clickButton(type) {
         case 'equals':
 
             let displayText = display.innerHTML.replace('&nbsp;', ' ');
-            let findExponentSups = display.innerHTML.match(/[0-9]+<sup class="choose-exponent">[0-9]+<\/sup>/g);
+            let findExponentSups = display.innerHTML.match(/[\-0-9]+<sup class="choose-exponent">[0-9]+<\/sup>/g);
 
             if (findExponentSups) {
 
                 findExponentSups.forEach(exponentSup=>{
 
-                    let findNumbers = exponentSup.match(/([0-9]+)<sup class="choose-exponent">([0-9]+)<\/sup>/);
+                    let findNumbers = exponentSup.match(/([\-0-9]+)<sup class="choose-exponent">([0-9]+)<\/sup>/);
 
                     let mainNumber = parseFloat(findNumbers[1]);
                     let exponentNumber = parseInt(findNumbers[2]);
