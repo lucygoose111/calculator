@@ -162,7 +162,7 @@ function clickButton(type) {
 
                 });
 
-                if (findExponentSups.length === 1) { return; }
+                if ( findExponentSups.length === 1 && !displayText.match(/[\+\-×÷]/) ) { return; }
 
             }
 
