@@ -2,6 +2,7 @@ const display = document.getElementById('display');
 const chooseExponent = '<sup class="choose-exponent">𝒴</sup>';
 const buttons = ['clear','backspace','exponent','divide', 7,8,9,'multiply', 4,5,6, 'subtract', 1,2,3, 'plus', 'pos-neg-toggle', 0, 'decimal', 'equals'];
 
+
 buttons.forEach(buttonType=>{
 
     let buttonElement = document.getElementById('btn-'+buttonType);
@@ -12,6 +13,13 @@ buttons.forEach(buttonType=>{
     });
 
 });
+
+const round = (number, decimalPlaces) => {
+
+    const factorOfTen = Math.pow(10, decimalPlaces)
+    return Math.round(number * factorOfTen) / factorOfTen
+
+}
 
 function clickButton(type) {
 
@@ -192,6 +200,25 @@ function clickButton(type) {
                         break;
 
                 }
+
+                let resultString = result.toString();
+                let trimRepeatingDecimalNumbers = resultString.replace(/(\d)\1{9}[0-9]+/, '$1$1');
+                trimRepeatingDecimalNumbers = trimRepeatingDecimalNumbers.replace(/[0]+$/, '');
+
+                let trimToDecimal = trimRepeatingDecimalNumbers.replace(/^[0-9]+\./, '');
+                console.log(trimToDecimal);
+                let decimalPoints = trimToDecimal.length;
+                if (decimalPoints > 5) { decimalPoints = decimalPoints - 1; }
+                let decimalPointModifer = "1";
+                for (i=1; i<=decimalPoints; i++) {
+                    decimalPointModifer += "0";
+                }
+                decimalPointModifer = parseInt(decimalPointModifer);
+                console.log(decimalPointModifer);
+
+                let resultFloat = parseFloat(trimRepeatingDecimalNumbers);
+
+                result = Math.round(resultFloat * decimalPointModifer) / decimalPointModifer;
 
                 display.innerHTML = result;
             
