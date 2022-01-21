@@ -16,8 +16,8 @@ buttons.forEach(buttonType=>{
 
 const round = (number, decimalPlaces) => {
 
-    const factorOfTen = Math.pow(10, decimalPlaces)
-    return Math.round(number * factorOfTen) / factorOfTen
+    const factorOfTen = Math.pow(10, decimalPlaces);
+    return Math.round(number * factorOfTen) / factorOfTen;
 
 }
 
@@ -152,20 +152,20 @@ function clickButton(type) {
         case 'equals':
 
             let displayText = display.innerHTML.replace('&nbsp;', ' ');
-            let findExponentSups = display.innerHTML.match(/[\-0-9]+<sup class="choose-exponent">[0-9]+<\/sup>/g);
+            let findExponentSups = display.innerHTML.match(/[\-0-9.]+<sup class="choose-exponent">[0-9]+<\/sup>/g);
 
             if (findExponentSups) {
 
                 findExponentSups.forEach(exponentSup=>{
 
-                    let findNumbers = exponentSup.match(/([\-0-9]+)<sup class="choose-exponent">([0-9]+)<\/sup>/);
+                    let findNumbers = exponentSup.match(/([\-0-9.]+)<sup class="choose-exponent">([0-9]+)<\/sup>/);
 
                     let mainNumber = parseFloat(findNumbers[1]);
                     let exponentNumber = parseInt(findNumbers[2]);
 
                     let exponentResult = mainNumber ** exponentNumber;
-
-                    display.innerHTML = display.innerHTML.replace(exponentSup, exponentResult);
+                    
+                    display.innerHTML = handleDecimals( display.innerHTML.replace(exponentSup, exponentResult) );
                     displayText = display.innerHTML;
 
                 });
@@ -201,25 +201,7 @@ function clickButton(type) {
 
                 }
 
-                let resultString = result.toString();
-                let trimRepeatingDecimalNumbers = resultString.replace(/(\d)\1{9}[0-9]+/, '$1$1');
-                trimRepeatingDecimalNumbers = trimRepeatingDecimalNumbers.replace(/[0]+$/, '');
-
-                let trimToDecimal = trimRepeatingDecimalNumbers.replace(/^[0-9]+\./, '');
-                console.log(trimToDecimal);
-                let decimalPoints = trimToDecimal.length;
-                if (decimalPoints > 5) { decimalPoints = decimalPoints - 1; }
-                let decimalPointModifer = "1";
-                for (i=1; i<=decimalPoints; i++) {
-                    decimalPointModifer += "0";
-                }
-                decimalPointModifer = parseInt(decimalPointModifer);
-                console.log(decimalPointModifer);
-
-                let resultFloat = parseFloat(trimRepeatingDecimalNumbers);
-
-                result = Math.round(resultFloat * decimalPointModifer) / decimalPointModifer;
-
+                result = handleDecimals(result);
                 display.innerHTML = result;
             
             }
@@ -233,5 +215,28 @@ function clickButton(type) {
             break;
 
     }
+
+}
+
+function handleDecimals(result) {
+
+    let resultString = result.toString();
+    let trimRepeatingDecimalNumbers = resultString.replace(/(\d)\1{9}[0-9]+/, '$1$1');
+    trimRepeatingDecimalNumbers = trimRepeatingDecimalNumbers.replace(/[0]+$/, '');
+
+    let trimToDecimal = trimRepeatingDecimalNumbers.replace(/^[0-9]+\./, '');
+    let decimalPoints = trimToDecimal.length;
+    if (decimalPoints > 3) { decimalPoints = decimalPoints - 1; }
+    let decimalPointModifer = "1";
+    for (i=1; i<=decimalPoints; i++) {
+        decimalPointModifer += "0";
+    }
+    decimalPointModifer = parseInt(decimalPointModifer);
+
+    let resultFloat = parseFloat(trimRepeatingDecimalNumbers);
+
+    result = Math.round(resultFloat * decimalPointModifer) / decimalPointModifer;
+
+    return result;
 
 }

@@ -16,6 +16,12 @@ body {
 
 }
 
+button {
+
+    font-family: 'Highway Gothic';
+
+}
+
 .calculator {
 
     border-radius: 1rem;
@@ -29,7 +35,7 @@ body {
     border: var(--thickborder);
     font-size: 2rem;
     text-align: right;
-    font-family: arial;
+    font-family: 'Highway Gothic';
     overflow-x: auto;
     overflow-y: hidden;
     border-top-left-radius: 1rem;
