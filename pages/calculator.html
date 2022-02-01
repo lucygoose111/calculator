@@ -1,89 +1,66 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <head>
+    <link rel="stylesheet" href="../assets/css/calculator-style.css" />
+    <script src="../assets/js/calculator.js" defer></script>
 
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+  </head>
 
-        <link rel="stylesheet" href="../assets/css/calculator-style.css">
-        <script src="../assets/js/calculator.js" defer></script>
-
-        <title>Calculator</title>
-
-    </head>
-
-    <body>
-
-        <div class="calculator">
-
-            <div id="display"></div>
-            <div id="pad">
-
-                <div>
-
-                    <button id="btn-exponent">𝑥<sup class="exponent">𝒴</sup></button>
-                    <button id="btn-square" disabled="true">𝑥²</button>
-                    <button id="btn-cube"disabled=true>𝑥³</button>
-                    <button id="btn-pow10" disabled=true>10<sup>𝑥</sup></button>
-
-                </div>
-
-                <div>
-
-                    <button id="btn-pi" disabled=true>π</button>
-                    <button id="btn-par-begin" disabled=true>(</button>
-                    <button id="btn-par-end" disabled=true>)</button>
-                    <button id="btn-clear">C</button>
-
-                </div>
-
-                <div>
-
-                    
-                    <button id="btn-percent" disabled=true>%</button>
-                    <button id="btn-square-root" disabled=true>√𝑥</button>
-                    <button id="btn-backspace">←</button>
-                    <button id="btn-divide">÷</button>
-
-                </div>
-                <div>
-
-                    <button id="btn-7" class="num-button">7</button>
-                    <button id="btn-8" class="num-button">8</button>
-                    <button id="btn-9" class="num-button">9</button>
-                    <button id="btn-multiply">×</button>
-
-                </div>
-                <div>
-                    <button id="btn-4" class="num-button">4</button>
-                    <button id="btn-5" class="num-button">5</button>
-                    <button id="btn-6" class="num-button">6</button>
-                    <button id="btn-subtract">-</button>
-                </div>
-                <div>
-
-                    <button id="btn-1" class="num-button">1</button>
-                    <button id="btn-2" class="num-button">2</button>
-                    <button id="btn-3" class="num-button">3</button>
-                    <button id="btn-plus">+</button>
-
-                </div>
-                <div>
-
-                    <button id="btn-pos-neg-toggle" class="num-button">+/-</button>
-                    <button id="btn-0" class="num-button">0</button>
-                    <button id="btn-decimal" class="num-button">.</button>
-                    <button id="btn-equals" class="equals">=</button>
-                    
-                </div>
-            
-            </div>
-
+  <body>
+    <div class="calculator">
+      <div id="display"></div>
+      <div id="pad">
+        <div>
+          <button id="btn-exponent">𝑥<sup class="exponent">𝒴</sup></button>
+          <button id="btn-square" disabled="true">𝑥²</button>
+          <button id="btn-cube" disabled="true">𝑥³</button>
+          <button id="btn-pow10" disabled="true">10<sup>𝑥</sup></button>
         </div>
-        
-    </body>
 
+        <div>
+          <button id="btn-pi" disabled="true">π</button>
+          <button id="btn-par-begin" disabled="true">(</button>
+          <button id="btn-par-end" disabled="true">)</button>
+          <button id="btn-clear">C</button>
+        </div>
+
+        <div>
+          <button id="btn-percent" disabled="true">%</button>
+          <button id="btn-square-root" disabled="true">√𝑥</button>
+          <button id="btn-backspace">←</button>
+          <button id="btn-divide">÷</button>
+        </div>
+        <div>
+          <button id="btn-7" class="num-button">7</button>
+          <button id="btn-8" class="num-button">8</button>
+          <button id="btn-9" class="num-button">9</button>
+          <button id="btn-multiply">×</button>
+        </div>
+        <div>
+          <button id="btn-4" class="num-button">4</button>
+          <button id="btn-5" class="num-button">5</button>
+          <button id="btn-6" class="num-button">6</button>
+          <button id="btn-subtract">-</button>
+        </div>
+        <div>
+          <button id="btn-1" class="num-button">1</button>
+          <button id="btn-2" class="num-button">2</button>
+          <button id="btn-3" class="num-button">3</button>
+          <button id="btn-plus">+</button>
+        </div>
+        <div>
+          <button id="btn-pos-neg-toggle" class="num-button">+/-</button>
+          <button id="btn-0" class="num-button">0</button>
+          <button id="btn-decimal" class="num-button">.</button>
+          <button id="btn-equals" class="equals">=</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

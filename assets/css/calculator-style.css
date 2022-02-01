@@ -1,109 +1,84 @@
 :root {
-
-    --lightgrey:rgb(197, 196, 196);
-    --thickborder: 5px solid rgb(39, 39, 39);
-
+  --lightgrey: rgb(197, 196, 196);
+  --thickborder: 5px solid rgb(39, 39, 39);
 }
 
 body {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    align-items: center;
-    overflow: hidden;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  overflow: hidden;
 }
 
 button {
-
-    font-family: 'Highway Gothic';
-
+  font-family: "Highway Gothic";
 }
 
 .calculator {
-
-    border-radius: 1rem;
-    box-shadow: 10px 10px 10px rgb(102, 102, 102);
-
+  border-radius: 1rem;
+  box-shadow: 10px 10px 10px rgb(102, 102, 102);
 }
 
 #display {
-
-    height: 2.5rem;
-    border: var(--thickborder);
-    font-size: 2rem;
-    text-align: right;
-    font-family: 'Highway Gothic';
-    overflow-x: auto;
-    overflow-y: hidden;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    border-bottom: none;
-    background-color: var(--lightgrey);
-    scrollbar-color: var(--lightgrey);
-
+  height: 2.5rem;
+  border: var(--thickborder);
+  font-size: 2rem;
+  text-align: right;
+  font-family: "Highway Gothic";
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom: none;
+  background-color: var(--lightgrey);
+  scrollbar-color: var(--lightgrey);
 }
 
-#display, #pad {
-
-    width: 20vw;
-    padding: 0.5rem;
-
+#display,
+#pad {
+  width: 20vw;
+  padding: 0.5rem;
 }
 
 #pad {
-
-    display: flex;
-    flex-direction: column;
-    border: var(--thickborder);
-    background-color: rgb(108, 172, 255);
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    border-top: none;
-
+  display: flex;
+  flex-direction: column;
+  border: var(--thickborder);
+  background-color: rgb(108, 172, 255);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: none;
 }
 
 button {
-
-    background-color: var(--lightgrey);
-
+  background-color: var(--lightgrey);
 }
 
 .num-button {
-
-    background-color: rgb(0, 131, 175);
-    color: white;
-
+  background-color: rgb(0, 131, 175);
+  color: white;
 }
 
 #pad > div {
-
-    
-    min-width: 10rem;
-    min-height: 2rem;
-    display: flex;
-
+  min-width: 10rem;
+  min-height: 2rem;
+  display: flex;
 }
 
 #pad > div button {
-
-    width: 100%;
-    font-size: 2rem;
-    cursor: pointer;
-
+  width: 100%;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
-.exponent, .choose-exponent {
-
-    font-size: 1.2rem; 
-
+.exponent,
+.choose-exponent {
+  font-size: 1.2rem;
 }
 
 .equals {
-
-    background-color: rgb(99, 99, 253);
-    color: white;
-
+  background-color: rgb(99, 99, 253);
+  color: white;
 }
