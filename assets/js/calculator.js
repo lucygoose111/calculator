@@ -214,7 +214,7 @@ function handleDecimals(result) {
     "$1$1"
   );
   trimRepeatingDecimalNumbers = trimRepeatingDecimalNumbers.replace(
-    /[0]+$/,
+    /\.[0]+$/,
     ""
   );
 
